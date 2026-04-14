@@ -3,32 +3,42 @@ package org.example.entidades;
 import org.example.logicacuentas.TipoCuenta;
 
 public class Cuenta {
-    private int id;
+    private int contador = 0;
+    private int idCuenta;
     private String titular;
     private double saldo;
     private boolean activa;
     private TipoCuenta tipoDeCuenta;
     private String pass;
 
-    public Cuenta(int id, String titular, double saldo, boolean activa, TipoCuenta tipoDeCuenta, String pass) {
-        this.id = id;
+    /*
+    * para que un usuario pueda realizar cualquier operacion la
+    * cuenta tiene que estar activa
+    * */
+
+    public Cuenta(String titular, TipoCuenta tipoDeCuenta, String pass) {
+        this.idCuenta = contador++;
         this.titular = titular;
-        this.saldo = saldo;
-        this.activa = activa;
+        this.saldo = 0;
+        this.activa = true;
         this.tipoDeCuenta = tipoDeCuenta;
         this.pass = pass;
     }
 
     public void depositar(double monto)
     {
-        if (monto > 0)
+        if (monto > 0 && activa == true)
         {
             sumarSaldo(monto);
             System.out.println("El saldo actual de " + this.titular + " es de: " + this.saldo);
         }
-        else
+        else if(monto < 0 && activa == false)
         {
             System.out.println("El monto a depositar en la cuenta de " + this.titular + " es insuficiente");
+        }
+        else
+        {
+            System.out.println("Su cuenta esta inavilitada para hacer esta operación");
         }
     }
 
