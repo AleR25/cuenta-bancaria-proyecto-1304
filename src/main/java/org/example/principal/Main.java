@@ -1,4 +1,6 @@
-package org.example;
+package org.example.principal;
+import org.example.CuentaBancaria;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
