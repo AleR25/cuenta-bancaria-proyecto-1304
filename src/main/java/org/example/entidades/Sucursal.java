@@ -1,6 +1,5 @@
 package org.example.entidades;
 
-import org.example.builder.CuentaBuilder;
 import org.example.logicacuentas.TipoCuenta;
 
 import java.util.ArrayList;
@@ -18,12 +17,8 @@ public class Sucursal
         this.cuenta = new ArrayList<>();
     }
 
-    public void crearCuenta(String titular, TipoCuenta tipoCuenta, String pass) //posible tipo cuenta
+    public void crearCuenta(String titular, Usuario usuario, TipoCuenta tipoCuenta) //posible tipo cuenta
     {
-        Cuenta cuentaBancaria = new CuentaBuilder()
-                .setTitular(titular)
-                .setTipoDeCuenta(tipoCuenta)
-                .setPass(pass)
-                .build();
+        Cuenta cuentaNueva = new Cuenta(titular, usuario, tipoCuenta);
     }
 }
