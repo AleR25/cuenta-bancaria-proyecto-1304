@@ -1,6 +1,6 @@
 package org.example.logicacuentas;
 
-public class CuentaCorriente implements TipoCuenta{
+public class CuentaCorriente extends TipoCuenta{
     @Override
     public void calcularComisionPorMantenimiento() {
 

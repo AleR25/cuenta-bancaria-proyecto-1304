@@ -1,6 +1,14 @@
 package org.example.logicacuentas;
 
-public interface TipoCuenta {
-    void calcularComisionPorMantenimiento();
-    void calcularIntereses();
+public class TipoCuenta {
+    private int idTipoCuenta;
+    private String nombreDeTipoCuenta;
+
+    public void calcularComisionPorMantenimiento() {
+
+    }
+
+    public void calcularIntereses() {
+
+    }
 }

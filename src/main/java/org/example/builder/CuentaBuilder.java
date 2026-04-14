@@ -1,7 +1,5 @@
 package org.example.builder;
 
-import org.example.logicacuentas.TipoCuenta;
-
 public class CuentaBuilder {
     private int contador = 0;
 
