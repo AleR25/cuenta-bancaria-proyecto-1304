@@ -2,8 +2,11 @@ package org.example.principal;
 
 import org.example.entidades.Banco;
 import org.example.entidades.Cuenta;
+import org.example.entidades.Sucursal;
 import org.example.usuarios.Administrador;
 import org.example.usuarios.Cliente;
+
+import java.util.Optional;
 
 public class Main {
     public static void main(String[] args) {
@@ -28,6 +31,11 @@ public class Main {
 
  /*       VALIDACIONES PARA BANCO*/
 
-        financier.buscarSucursal(2);
+        Sucursal sucursal1 = financier.getSucursales().get(0);
+        System.out.println(sucursal1);
+
+        sucursal1.crearCliente("Alejandro", "ale123", "12345");
+
+        System.out.println(sucursal1.getClientes());
     }
 }

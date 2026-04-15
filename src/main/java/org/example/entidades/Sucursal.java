@@ -28,6 +28,10 @@ public class Sucursal
         return idSucursal;
     }
 
+    public List<Cliente> getClientes() {
+        return clientes;
+    }
+
     public void crearCliente(String nombre, String usuario, String pass)
     {
         clientes.add(new Cliente(nombre, false, usuario, pass));

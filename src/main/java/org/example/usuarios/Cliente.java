@@ -10,4 +10,9 @@ public class Cliente extends Usuario {
     public Cliente(String nombre, boolean asignado, String username, String password) {
         super(contador++, 101, nombre, asignado, username, password);
     }
+
+    @Override
+    public String toString() {
+        return "Cliente: " + super.toString();
+    }
 }

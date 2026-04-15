@@ -36,4 +36,13 @@ public class Usuario {
                         && this.password.equalsIgnoreCase(password);
     }
 
+    @Override
+    public String toString() {
+        return  "idUsuario=" + idUsuario +
+                ", codRol=" + codRol +
+                ", nombre='" + nombre +
+                ", asignado=" + asignado +
+                ", username='" + username +
+                ", password='" + password;
+    }
 }
