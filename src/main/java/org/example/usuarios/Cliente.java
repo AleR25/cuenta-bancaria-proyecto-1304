@@ -7,12 +7,7 @@ import org.example.entidades.Usuario;
 public class Cliente extends Usuario {
     private static int contador = 1;
 
-    public Cliente(String username, String password) {
-        super(contador++, 101, username, password);
+    public Cliente(String nombre, boolean asignado, String username, String password) {
+        super(contador++, 101, nombre, asignado, username, password);
     }
-
-
-    /*public void solicitarCuenta(Administrador administrador){
-        Solicitud solicitud = new Solicitud()
-    }*/
 }

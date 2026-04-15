@@ -1,7 +1,5 @@
 package org.example.entidades;
 
-import org.example.logicacuentas.TipoCuenta;
-
 public class Cuenta {
     private int contador = 1;
 
