@@ -3,7 +3,7 @@ package org.example.entidades;
 import org.example.logicacuentas.TipoCuenta;
 
 public class Cuenta {
-    private int contador = 0;
+    private int contador = 1;
 
     private int idCuenta;
     private String titular;
@@ -20,7 +20,7 @@ public class Cuenta {
     public Cuenta(String titular, Usuario usuario, TipoCuenta tipoDeCuenta) {
         this.idCuenta = contador++;
         this.titular = titular;
-        this.usuario = usuario;
+        this.usuario = usuario; //Puede ser cliente o administrador
         this.saldo = 0;
         this.activa = true;
         this.tipoDeCuenta = tipoDeCuenta;
