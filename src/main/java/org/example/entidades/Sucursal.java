@@ -24,6 +24,10 @@ public class Sucursal
         this.clientes = new ArrayList<>();
     }
 
+    public Administrador getAdministrador() {
+        return administrador;
+    }
+
     public int getIdSucursal() {
         return idSucursal;
     }
