@@ -63,6 +63,14 @@ public class Sucursal
                 .orElse(null);
     }
 
+    //
+    public Cliente login(String username, String password) {
+        return clientes.stream()
+                .filter(u -> u.autenticar(username, password))
+                .findFirst()
+                .orElse(null);
+    }
+
     @Override
     public String toString() {
         return "Sucursal{" +

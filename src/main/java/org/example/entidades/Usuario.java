@@ -17,6 +17,10 @@ public class Usuario {
         this.password = password;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public boolean isAsignado() {
         return asignado;
     }

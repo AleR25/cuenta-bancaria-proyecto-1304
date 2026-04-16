@@ -55,6 +55,12 @@ public class Banco
         sucursales.removeIf(c -> c.getIdSucursal() == idSucursal);
     }
 
+    public Optional<Sucursal> seleccionarSucursal(int idBuscado) {
+        return sucursales.stream()
+                .filter(s -> s.getIdSucursal() == idBuscado)
+                .findFirst();
+    }
+
     @Override
     public String toString() {
         return "Banco{" +
