@@ -43,7 +43,7 @@ public class Banco implements ComponenteFinanciero
 
     public void crearSucursal(String direccion, Administrador administrador)
     {
-        if(administrador.isAsignado() == false)
+        if(!administrador.isAsignado())
         {
             sucursales.add(new Sucursal(direccion, administrador));
             administrador.setAsignado(true);

@@ -3,6 +3,7 @@ package org.example.principal;
 import org.example.entidades.Banco;
 import org.example.entidades.Cuenta;
 import org.example.entidades.Sucursal;
+import org.example.menu.AdminController;
 import org.example.usuarios.Administrador;
 import org.example.usuarios.Cliente;
 
@@ -12,28 +13,18 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        Scanner teclado = new Scanner(System.in); //int
-        Scanner teclado2 = new Scanner(System.in);//String
+        Scanner teclado = new Scanner(System.in);
 
         Sucursal sucursalSeleccionada = null;
 
         Banco financier = new Banco("Financier");
-        System.out.println(financier);
-
         Banco galitcia = new Banco("Galitcia");
-        System.out.println(galitcia);
 
         financier.contratarAdministrador("Juan", "juan123", "Holamundo123");
-        System.out.println(financier);
+        financier.contratarAdministrador("Pedro", "pedro123", "HolaMundo123");
 
         financier.crearSucursal("Av cordoba", financier.getAdministradores().get(0));
-        System.out.println(financier);
-
-        financier.eliminarSucursal(1);
-        System.out.println(financier);
-
-        financier.crearSucursal("Av cordoba", financier.getAdministradores().get(0));
-        System.out.println(financier);
+        financier.crearSucursal("Av corrientes", financier.getAdministradores().get(1));
 
         /*       VALIDACIONES PARA BANCO*/
 
@@ -59,84 +50,32 @@ public class Main {
         }
 
         /*SELECCION DE TIPO DE CLIENTE*/
+        while (true) {
+            System.out.println("1. SOY ADMINISTRADOR");
+            System.out.println("2. SOY CLIENTE");
 
-        System.out.println("1. SOY ADMINISTRADOR");
-        System.out.println("2. SOY CLIENTE");
+            int perfil = teclado.nextInt();
+            teclado.nextLine();
 
-        int perfil = 0;
+            if (perfil != 1 && perfil != 2) {
+                System.out.println("Opción inválida");
+                continue;
+            }
 
-        while(perfil != 1 && perfil != 2)
-        {
-            perfil = teclado.nextInt();
-            if (perfil == 1 || perfil == 2) {
-                System.out.print("Ingrese su nombre de usuario: ");
-                String username = teclado2.nextLine();
+            System.out.print("Usuario: ");
+            String username = teclado.nextLine();
 
-                System.out.print("Ingrese su contraseña: ");
-                String password = teclado2.nextLine();
+            System.out.print("Contraseña: ");
+            String password = teclado.nextLine();
 
-                if (perfil == 1 && sucursalSeleccionada.getAdministrador().autenticar(username, password)) {
-                    int opcionAdmin = 0;
-
-                    do {
-                        System.out.println("\n--- PANEL DE ADMINISTRADOR ---");
-                        System.out.println("ELIJA LA OPCION QUE DESEE:");
-                        System.out.println("1. GESTIONAR SOLICITUDES");
-                        System.out.println("2. BUSCAR CLIENTE");
-                        System.out.println("3. BUSCAR CUENTA");
-                        System.out.println("4. ASIGNAR CUENTA AL CLIENTE");
-                        System.out.println("0. CERRAR SESIÓN");
-
-                        opcionAdmin = teclado.nextInt();
-                        int opcionSubMenu;
-
-                        switch (opcionAdmin) {
-
-                            case 1:
-                                System.out.println("GESTIÓN DE SOLICITUDES");
-                                sucursalSeleccionada.getAdministrador().mostrarSolicitudesPendientes();
-
-                                System.out.println("1. RESOLVER SOLICITUD");
-                                System.out.println("0. VOLVER A MENÚ PRINCIPAL");
-
-                                opcionSubMenu = teclado.nextInt();
-
-                                if (opcionSubMenu == 1)
-                                {
-
-                                }
-                                break;
-                            case 2:
-                                System.out.println("Buscando Cliente...");
-                                // Tu lógica aquí: buscarCliente();
-                                break;
-                            case 3:
-                                System.out.println("Buscando Cuenta...");
-                                // Tu lógica aquí: buscarCuenta();
-                                break;
-                            case 4:
-                                System.out.println("Asignando Cuenta al Cliente...");
-                                // Tu lógica aquí: asignarCuenta();
-                                break;
-                            case 0:
-                                System.out.println("Cerrando sesión de administrador...");
-                                break;
-                            default:
-                                System.out.println("Opción no válida. Intente de nuevo.");
-                        }
-
-                    } while (opcionAdmin != 0);
-
-                } else {
-                    System.out.println("Iniciando sesión como Cliente...");
-                    // Lógica para cliente
+            if (perfil == 1) {
+                if (sucursalSeleccionada.getAdministrador().autenticar(username, password)) {
+                    AdminController controller = new AdminController(sucursalSeleccionada);
+                    controller.iniciar(teclado);
                 }
             } else {
-                System.out.println("Opción no válida. Finalizando programa");
-                // Aquí podrías meter esto dentro de otro bucle si querés forzar la elección
+                System.out.println("Login cliente (pendiente)");
             }
         }
-
-
     }
 }
