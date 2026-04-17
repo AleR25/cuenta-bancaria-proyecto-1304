@@ -1,6 +1,5 @@
 package org.example.entidades;
 
-import org.example.usuarios.Administrador;
 import org.example.usuarios.Cliente;
 
 public class Solicitud {

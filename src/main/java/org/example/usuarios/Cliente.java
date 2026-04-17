@@ -1,7 +1,5 @@
 package org.example.usuarios;
 
-import org.example.entidades.Cuenta;
-import org.example.entidades.Solicitud;
 import org.example.entidades.Usuario;
 
 public class Cliente extends Usuario {

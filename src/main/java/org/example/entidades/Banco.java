@@ -1,14 +1,18 @@
 package org.example.entidades;
 
+import org.example.interf.ComponenteFinanciero;
 import org.example.usuarios.Administrador;
-import org.example.usuarios.Cliente;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class Banco
+public class Banco implements ComponenteFinanciero
 {
+    /*SE APLICO EL PATRON DE DISEÑO COMPOSITE PARA PODER HACER EL
+    BALANCE GENERAL DEL DINERO QUE CIRCULA EN EL BANCO, PASANDO DESDE
+    SUCURSALES HASTA LAS CUENTAS.
+    * */
     private int idBanco;
     private String nombre;
     private List<Sucursal> sucursales;
@@ -42,6 +46,7 @@ public class Banco
         if(administrador.isAsignado() == false)
         {
             sucursales.add(new Sucursal(direccion, administrador));
+            administrador.setAsignado(true);
         }
         else
         {
@@ -69,5 +74,10 @@ public class Banco
                 ", sucursales=" + sucursales +
                 ", administradores=" + administradores +
                 '}';
+    }
+
+    @Override
+    public double getSaldo() {
+        return sucursales.stream().mapToDouble(ComponenteFinanciero::getSaldo).sum();
     }
 }

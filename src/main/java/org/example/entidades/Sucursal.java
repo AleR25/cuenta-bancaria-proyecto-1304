@@ -1,12 +1,13 @@
 package org.example.entidades;
 
+import org.example.interf.ComponenteFinanciero;
 import org.example.usuarios.Administrador;
 import org.example.usuarios.Cliente;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Sucursal
+public class Sucursal implements ComponenteFinanciero
 {
     private int idSucursal;
     private String direccion;
@@ -53,9 +54,12 @@ public class Sucursal
         administrador.agregarSolicitud(solicitud);
     }
 
-    public void buscarCuenta(int idCuenta)
+    public Cuenta buscarCuenta(int idCuenta)
     {
-
+        return cuentas.stream()
+                .filter(c -> c.getIdCuenta() == idCuenta)
+                .findFirst()
+                .orElse(null);
     }
 
     //metodo para buscar cliente en List, no funciona fuera de Sucursal
@@ -73,6 +77,11 @@ public class Sucursal
                 .filter(u -> u.autenticar(username, password))
                 .findFirst()
                 .orElse(null);
+    }
+
+    @Override
+    public double getSaldo() {
+        return cuentas.stream().mapToDouble(ComponenteFinanciero::getSaldo).sum();
     }
 
     @Override
