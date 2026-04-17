@@ -48,15 +48,15 @@ public class Sucursal implements ComponenteFinanciero
         clientes.add(new Cliente(nombre, false, usuario, pass));
     }
 
-    public void crearCuenta(Cuenta cuenta) //posible tipo cuenta
+    public void agregarCuenta(Cuenta cuenta) //posible tipo cuenta
     {
         cuentas.add(cuenta);
         System.out.println("Cuenta creada correctamente"); //ejecutar un if
     }
 
-    public void solicitudCrearCuenta(int idCliente)
+    public void solicitudCrearCuenta(int idCliente, TipoCuenta tipoCuenta)
     {
-        Solicitud solicitud = new Solicitud(buscarCliente(idCliente));
+        Solicitud solicitud = new Solicitud(buscarCliente(idCliente), tipoCuenta);
         solicitudes.add(solicitud);
     }
 

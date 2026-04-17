@@ -26,9 +26,9 @@ public class SolicitudService {
 
     public void aprobarSolicitud(Solicitud solicitud) {
         // crear cuenta
-        Cuenta cuenta = new Cuenta();
-
-        solicitud.getCliente().setCuenta();
+        Cuenta cuenta = new Cuenta(solicitud.getCliente().getNombre(),
+                solicitud.getCliente(),
+                solicitud.getTipoCuenta());
 
         sucursal.agregarCuenta(cuenta);
 

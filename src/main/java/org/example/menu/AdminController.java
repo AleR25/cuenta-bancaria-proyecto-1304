@@ -26,7 +26,7 @@ public class AdminController
 
             switch (opcion) {
                 case 1:
-                    gestionarSolicitudes();
+                    mostrarSolicitudesPendientes();
                     break;
                 case 2:
                     buscarCliente();
@@ -36,8 +36,14 @@ public class AdminController
         } while (opcion != 0);
     }
 
-    private void gestionarSolicitudes() {
-        sucursal.getAdministrador().mostrarSolicitudesPendientes();
+    public void mostrarSolicitudesPendientes() {
+        System.out.println("--- LISTA DE SOLICITUDES PENDIENTES ---");
+        for (int i = 0; i < sucursal.getSolicitudes().size(); i++) {
+            System.out.println(sucursal.getSolicitudes().get(i));
+        }
+
+        //MODIFICAR
+        System.out.println("NO HAY MAS SOLICITUDES");
     }
 
     private void buscarCliente() {
